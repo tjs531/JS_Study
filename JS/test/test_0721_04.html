@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0721 4번</title>
+    <!-- 
+        1. 입력창으로 부터 정수를 입력 받아서 출력하는 프로그램
+        입력 : 정수 입력 : 10
+        출력 : 1에서 부터 입력받은 정수까지 출력, 홀수 일때는 글자 색을 빨강생, 짝수일때는 파랑색
+        브라우저로 출력
+     -->
+</head>
+<body>
+    <script>
+        var num = parseInt(prompt('정수를 입력하세요'));
+        var color;
+
+        for(var i=1; i<=num; i++) {
+            if(i%2 == 0) {
+                color = 'blue';
+            } else {
+                color = 'red';
+            }
+            document.write('<span style="color:'+ color  +'";> '+ i +'</span>');
+        }
+    </script>
+    
+</body>
+</html>

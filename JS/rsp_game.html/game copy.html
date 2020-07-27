@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first {width:500px; height: 260px; border: 3px solid pink; margin:300px 700px;}
+        .first h1{text-align: center; margin-top:70px;}
+        .first button {width: 200px; height: 50px; margin:10px 150px; margin-bottom:100px;}
+        .first p {text-align: center;}
+    </style>
+</head>
+<body>
+
+    <script>
+        var gameNum;
+        var win=0;
+        var lose=0;
+        var same=0;
+        var cnt=0;
+
+      //  while(){
+            document.write("<h1>가위바위보 게임</h1>");
+            document.write("<img src='1.jpg' onclick='gameNum=1;'> <img src='2.jpg' onclick='gameNum=2;'><img src='3.jpg' onclick='gameNum=3;'>");
+
+            var com = Math.ceil(Math.random() * 3);
+        
+            switch(com-gameNum){
+                case 0:
+                    same++;
+                    cnt++;
+                    document.write("<h1 style='text-align:center;'>비겼습니다.</h1><br>");
+                    break;
+                case 1: case -2:
+                    lose++;
+                    cnt++;
+                    document.write("<h1 style='text-align:center;'>졌습니다 ㅠㅠ</h1><br>");
+                    break;
+                case 2: case -1:
+                    win++;
+                    cnt++;
+                    document.write("<h1 style='text-align:center;'>이겼습니다!</h1><br>");
+                    break;
+            }
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형변환 함수</title>
+</head>
+<body>
+    <h3>형변환 함수</h3>
+    <p>데이터타입(자료형)을 변환하는 함수</p>
+    <p>
+        1.String(): 숫자를 문자로 변환하는 함수.<br>
+        2.Number(): 문자를 숫자로 변환하는 함수.<br>
+        3.Boolean() : 비논리형을 논리형으로 변환하는 함수<br>
+        -논리형 : true, false 둘 중에 하나<br>
+        -true : 문자열, 0을 제외한 모든 숫자(정수,실수 포함)<br>
+        -false : 0, null, undefined, ""(빈 문자열)<br>
+        4. toString(): 숫자를 문자로 변환하는 함수<br>
+        5. parseInt() : 문자를 정수로 변환하는 함수<br>
+        6. parseFloat() : 문자를 실수로 변환하는 함수<br>
+    </p>
+
+    <script>
+        var a="10", b=20, c;
+
+        c = Number(a) + b;
+        console.log("결과: " + c);
+        console.log("타입: " + typeof c);   //number
+        console.log("타입: " + typeof a);   //a는 여전히 문자
+
+        c = a+b;  //문자 + 숫자 = 문자
+        console.log("결과: " + c);
+        console.log("타입: " + typeof c);
+
+        var x = "ten";
+        x = Number(x);         //문자 "ten"을 숫자로 바꿀 경우.
+        console.log("결과: " + x);  //NaN : not a number(숫자가 아님). 에러는 안뜨지만 값은 들어가지 않음.
+        console.log("타입: " + typeof x);
+
+        var y = 100;
+        var z = String(y);
+        console.log("결과 : "+z);
+        console.log("타입: "+ typeof z);
+
+        //논리형 : true, false 둘 중 하나
+        //true : 문자열, 0을 제외한 모든 숫자(정수,실수 포함)
+        //false: 0, false, undefined, ""(빈문자열. 한칸 띄어있으면 빈 문자열 아니다.)
+        
+        //문자열
+        var h = Boolean("자바스크립트");       //true
+        console.log("결과 : "+ h);
+        console.log("타입: "+ typeof h);
+
+        //0
+        h = Boolean(0);     //false
+        console.log("결과 : "+ h);
+        console.log("타입: "+ typeof h);
+
+        //숫자
+        h = Boolean(1);     //true
+        console.log("결과 : "+ h);
+        console.log("타입: "+ typeof h);
+
+        h = Boolean(-1);        //true
+        console.log("결과 : "+ h);
+        console.log("타입: "+ typeof h);
+
+        //null
+        h = Boolean(null);      //false
+        console.log("결과 : "+ h);
+        console.log("타입: "+ typeof h);
+
+        var g;                          //undefined
+        console.log("결과 : "+ Boolean(g));
+        console.log("타입: "+ typeof g);
+
+        //빈문자
+        var i="";
+        console.log("결과 : "+ Boolean(i));     //false
+        console.log("타입: "+ typeof i);
+
+        //toString()
+        var aa = 10;
+        aa = aa.toString();
+        console.log("결과 : "+ aa);    
+        console.log("타입: "+ typeof aa);
+
+        var bb = "30";
+        bb = parseInt(bb);
+        console.log("결과 : "+ bb);  
+        console.log("타입: "+ typeof bb);
+
+        var cc = "3.14";
+        cc=parseFloat(cc);
+        console.log("결과 : "+ cc);  
+        console.log("타입: "+ typeof cc);
+    </script>
+</body>
+</html>
