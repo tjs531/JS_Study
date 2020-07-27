@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <style>
+        .container {
+            width: 800px;
+            height: 300px;
+            margin: 30px auto;
+            border: 1px solid black;
+        }
+        h3 {
+            text-align: center;
+        }
+        img {
+            box-shadow: 5px 5px 5px 5px silver;
+            width: 200px;
+            height: 200px;
+            margin-left: 50px;
+        }
+        img:hover {
+            box-shadow: -5px -5px silver;
+        }
+        #result {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <h3>가위, 바위, 보를 선택하시오.</h3>
+            <img onclick="Rock()" src="images/rock.png">
+            <img onclick="Scissors()" src="images/scissors.png">
+            <img onclick="Paper()" src="images/paper.png">
+    </div>
+    <div id="result">
+    </div>
+    
+    <script>
+        var go = confirm("게임을 하시겠습니까?");
+        var cnt = 0;
+        var win = 0;
+        var lose = 0;
+        var draw = 0;
+
+        function Rock() {
+            check(0,1);
+        }
+
+        function Scissors() {
+            check(1,2);
+        }
+
+        function Paper() {
+            check(2,0);
+        }
+
+        function check(a,b) {
+            while(go == true){
+            var ran = Math.floor(Math.random() * 3);
+            if(ran == a) {
+                result.innerHTML = "<h3>COM</h3><img src = '" + ran + ".jpg'>";
+                alert("DRAW");
+                cnt++;
+                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
+                go = confirm("게임을 하시겠습니까?");
+                //check2("DRAW");
+                cnt++;
+                draw++;
+                break;
+            } else if(ran == b){
+                result.innerHTML = '<h3>COM</h3><img src = "' + ran + '.jpg">';
+                alert("COM WIN");
+                cnt++;
+                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
+                go = confirm("게임을 하시겠습니까?");
+                cnt++;
+                lose++;
+                break;
+            } else {
+                result.innerHTML = '<h3>COM</h3><img src = "' + ran + '.jpg">';
+                alert("COM LOSE");
+                cnt++;
+                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
+                go = confirm("게임을 하시겠습니까?");
+                win++;
+                break;
+            }
+            }   
+        }
+        
+    </script>
+</body>
+</html>
