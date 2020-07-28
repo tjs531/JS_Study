@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 활용 5</title>
+    <!--
+        1.변수 선언 : var 라는 키워드 사용
+        -변수의 중복 선언 - 똑같은 이름으로 변수를 여러개 선언함으로써 심각한 문제를 야기함.
+        -A개발자의 maxScore은 90점이었지만, B개발자가 maxScore를 120점으로 바꿔서 개발에 큰 혼선을 가져오게 됨.
+
+        2. 이러한 문제점을 개선하기 위해서 ES6버전부터 let, const로 구분해서 사용하기를 권장.
+        3.현재 시점까지는 ES5버전을 많이 사용
+
+    -->
+</head>
+<body>
+    <script>
+
+        //1. var를 사용하여 변수 선언
+        //-중복선언, 중복할다아 모두 가능 -> 문제점이 되기도 함.
+
+        //A라는 개발자
+        var amxScore = 90;      //전역변수, 최고점수는 90점
+        document.write("최고점수: " + maxScore + "<br>");
+
+        // ......
+        //여러명이 협업하는 프로젝트라고 가정.
+        // ......
+
+        //B라는 개발자
+        var maxScore = 120;
+        document.write("최고점수 : " + maxScore + "<br>");
+
+
+        //2. let 사용
+
+        //A라는 개발자
+        let minScore = 50;
+        document.write("최저점수: " + minScore + "<br>");
+
+        //B개발자
+        //let minScore = 60;  //중복선언 불가
+        minScore = 60;  //값의 변경은 가능
+        document.write("최저점수 : " + minScore + "<br>");
+
+
+        //3. const 사용 - 중복 선언 불가, 값 재할당도 불가.
+        //상수(constant) 선언 - 한번 선언하고, 값을 할당하면 바꿀 수 없다.
+
+        //A개발자
+        const basicScore = 80;
+        document.write("기준점수: "+ basicScore + "<br>");
+
+        //B개발자
+        const basicScore = 90; //중복 선언 불가
+        basicScore = 60;        //값 재할당 불가
+        document.write("기준점수: "+ basicScore + "<br>");
+
+
+    </script>
+</body>
+</html>
