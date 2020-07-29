@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 매개변수(인수)</title>
+</head>
+<body>
+    <script>
+        function myFnc(name, area){
+            document.write("안녕하세요. " + name+"입니다.<br>");
+            document.write("사는 곳은 " + area + "입니다.<br><br>");
+        }
+        //함수 호출
+        myFnc("정혜선","대구");
+        myFnc("정혜선");    //두번째 값은 undefind로 처리됨.
+        myFnc("정혜선","대구",29);  //세번째 값은 무시함.
+    </script>
+</body>
+</html>

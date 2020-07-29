@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기념일 계산 프로그램</title>
+    <style>
+        .container {width:450px; margin:20px auto; border:1px solid black; }
+        .day1 {text-align:center; padding:20px; background-color:cornflowerblue;}
+        .day1 h3 {font-size:1.5em; color:navy;}
+        .day1 p {font-weight: bold; color:#222;}
+        .day1 .accent {font-style: italic; font-size:1.1em; color:blueviolet;}
+        .bar {background-color: #747474; color:#fff;font-size:1.1em; padding-left: 44px; margin:-18px auto; height:100px; line-height: 20px; padding-top:5px;}
+        .bar #year {width:60px;}
+        .bar #month {width: 30px;}
+        .bar #day {width:30px;}
+        .day2 {margin:0px auto; background-color: beige; padding:0;}
+        .day2 ul {list-style: none; height: 60px; border-bottom: 1px dashed #cccccc;}
+        .day2 .item_title { float:left; width: 160px; font-size:1.5em; font-weight: bold; line-height: 40px;}
+        .day2 .item_date { color:#222; font-size: 1.2em; text-align: right; margin-right:20px; line-height: 40px;}
+        .day2 ul:last-child {border:none; margin-bottom:0;}
+    
+    </style>
+    <!--
+        1. 기념일로부터 며칠이 지났는지를 계산하는 프로그램.
+
+        //개선사항
+        1.현재 프로그램은 코드에 날짜를 적어놓고 사용하므로,
+        이것을 브라우저에 날짜를 입력하여 사용.
+        2. 추가할 내용
+        기념일 입력(label), 실제 날짜(input), 날짜 계산(button)
+        3. 위치는 기념일 계산 텍스트 아래에.
+    -->
+</head>
+<body>
+    <div class="container">
+        <div class="day1">
+            <h3>기념일 계산 프로그램</h3>
+            <p>기념일로부터 오늘까지 <spen class="accent" id="passDay"></spen>일 지났습니다.</p>
+        </div>
+        <div class="bar">
+            <p>기념일 계산</p>
+            <p><label for="inputdate">기념일 입력 </label>
+            <input type="text" id= "year">년
+            <input type="text" id= "month">월
+            <input type="text" id= "day">일
+            <button onclick='main()'>입력</button></p>
+        </div>
+        <div class="day2">
+            <ul>
+                <li class="item_title">100일</li>
+                <li class="item_date" id="date100"></li>
+            </ul>
+            <ul>
+                <li class="item_title">200일</li>
+                <li class="item_date" id="date200"></li>
+            </ul>
+            <ul>
+                <li class="item_title">1년</li>
+                <li class="item_date" id="date365"></li>
+            </ul>
+            <ul>
+                <li class="item_title">500일</li>
+                <li class="item_date" id="date500"></li>
+            </ul>
+            <ul>
+                <li class="item_title">2년</li>
+                <li class="item_date" id="date730"></li>
+            </ul>
+            <ul>
+                <li class="item_title">1000일</li>
+                <li class="item_date" id="date1000"></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+
+        var firstDate;
+        var start, end, pass, passDay;
+
+        function main(){
+            var now = new Date();
+            var y= document.querySelector('#year').value;
+            var m= document.querySelector('#month').value;
+            var d= document.querySelector('#day').value;
+
+
+            firstDate = new Date(y+"-"+m+"-"+d); 
+
+            start = firstDate.getTime();
+            end = now.getTime();
+            pass = end - start; 
+            passDay = Math.floor(pass/1000/60/60/24);  
+
+            document.querySelector('#passDay').innerHTML = passDay;
+
+            
+            calcDay(100);
+            calcDay(200);
+            calcDay(365);
+            calcDay(500);
+            calcDay(730);
+            calcDay(1000);
+        }
+
+        function calcDay(days) {
+            var days2 = days*1000*60*60*24;
+            var passDay2 = start + days2;    
+            var someDate = new Date(passDay2);
+            
+            var year = someDate.getFullYear();
+            var month = someDate.getMonth()+1;
+            var day = someDate.getDate();
+
+            var month2 = "";
+            if(month < 10) {
+                month2 = '0' + month.toString();
+            }else{
+                month2 = month;
+            }
+
+            var day2 = "";
+            if(day<10){
+                day2 = '0'.concat(day);
+            }else{
+                day2 = day;
+            }
+            
+            document.querySelector("#date"+days).innerHTML = year + '년 ' + month2+ '월 ' + day2 + '일';
+        }
+    </script>
+</body>
+</html>
