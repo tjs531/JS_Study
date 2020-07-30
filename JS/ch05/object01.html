@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        1. 객체(object) - 자바스크립트에서 하나로 처리되는 대상의 모든 개념과 실체.
+        2. 객체의 구성요소 - 속성, 메소드
+        3. 객체의 종류
+        (1) 싱글톤 객체
+        -하나의 객체를 속성명:값의 형태로 표현되는 여러값을 중괄호로 묶어서 표현
+        -특별하게 메소드가 필요없는 간단한 객체를 나타낼 때 사용
+        -일회용으로 사용
+
+        (2) 인스턴스 객체
+    -->
+</head>
+<body>
+    <script>
+        //학생 정보를 담는 객체 생성
+
+        //1. 싱글톤 객체
+        var person = {
+            name:'정혜선',
+            major:'컴공',
+            age:29
+        };
+
+        document.write("이름: " + person.name + "<br>");
+        document.write("전공: " + person.major + "<br>");
+        document.write("나이: " + person.age + "<br>");
+
+        //싱글톤 객체 -2번방법
+        var person2 = new Object();
+        person2.name = '정혜선';
+        person2.major = '컴공';
+        person2.age = 29;
+
+        person2.name = 'ㅁㄴㅇ';          //값이 바뀔 수 있음.
+
+        document.write("이름: " + person.name + "<br>");
+        document.write("전공: " + person.major + "<br>");
+        document.write("나이: " + person.age + "<br>");
+
+        
+    </script>
+</body>
+</html>

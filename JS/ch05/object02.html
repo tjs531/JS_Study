@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 활용 2</title>
+    <!--
+        (2) 인스턴스 객체
+        - 객체 생성자 함수를 사용하여 인스턴스 객체를 생성
+        -this : 현재 코드를 실행하는 객체를 나타내는 키워드, this 는 생성되는 객체 자신
+        -객체 생성자 함수를 통해서 객체를 만들때 반드시 new 키워드를 사용하여 생성해야 함.
+    -->
+</head>
+<body>
+    <script>
+        //인스턴스 객체
+        function Student(name, major, age){
+            this.name = name;
+            this.major = major;
+            this.age = age;
+        }
+        
+        //인스턴스 생성
+        var s1 = new Student('정혜선', '컴공', 29);
+        var s2 = new Student('asdf','sdf',1);
+    </script>
+</body>
+</html>

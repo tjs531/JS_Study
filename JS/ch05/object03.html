@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체 생성자 함수
+        function Student(name, kor, eng, mat){
+            //프로퍼티(property)
+            this.name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.mat = mat;
+
+            //메소드
+            this.sum = function() {
+                return (this.kor + this.eng + this.mat);
+            }
+
+            this.ave = function() {
+                return this.sum() /3;
+            }
+
+            this.showInfo = function() {
+                return this.name + " " + this.sum() + " " + this.ave() + "<br>";
+            }
+        }
+
+        //객체생성
+       // var s1 = new Student('정혜선',100,100,100);
+
+        //document.write(s1.name + " / " + s1.sum());
+
+
+
+        var student = [
+            new Student('a',10,20,30),
+            new Student('b',100,40,30),
+            new Student('c',45,87,45)
+        ];
+
+        for(var i=0; i<student.length; i++){
+           // document.write(student[i].name + ", 총점: " + student[i].sum() + " " + student[i].ave() + "<br>");
+           document.write(student[i].showInfo());
+        }
+
+
+
+    </script>
+</body>
+</html>

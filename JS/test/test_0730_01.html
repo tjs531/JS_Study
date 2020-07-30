@@ -53,7 +53,7 @@
             color: #fff;
             font-size: 1.em;
 
-            height: 70px;
+            height: 30px;
             padding-top: 10px;
             padding-left: 36px;
         }
@@ -91,24 +91,9 @@
 
         }
 
-        .bar {height: 100px;}
-
-        .bar #year {
-            width: 60px;
-            margin-right: 5px;
-            margin-left: 10px;
-        }
-
-        .bar #month {
-            width: 30px;
-            margin-right: 5px;
-        }
-
-        .bar #day {
-            width: 30px;
-            margin-right: 5px;
-        }
-
+        .input_day {text-align: center;}
+        .input_day ul {list-style:none; margin-right:50px;}
+        .input_day button {width:80px; background-color: black; color:white; border:none; height:30px;}
         .day2 {
             margin: 0px auto;
             background-color: rgba(209, 209, 204, 0.877);
@@ -164,11 +149,15 @@
         </div>
         <div class="bar">
             <p>기념일 계산</p>
-            <p><label for="inputdate">기념일 입력 </label>
-            <input type="text" id= "year">년
-            <input type="text" id= "month">월
-            <input type="text" id= "day">일
-            <button onclick='main()'>입력</button></p>
+        </div>
+        <div class="input_day">
+            <ul>
+                <li>
+                    <label for="anni_day">기념일 입력 </label>&nbsp;
+                    <input type="date" id="anni_day">
+                    <button onclick="setAnniDay()">날짜 계산</button>
+                </li>
+            </ul>
         </div>
         <div class="day2">
             <ul>
@@ -198,17 +187,20 @@
         </div>
     </div>
     <script>
+        
 
         var firstDate;
         var start, end, pass, passDay;
 
-        function main(){
+        function setAnniDay(){
             var now = new Date();
-            var y= document.querySelector('#year').value;
-            var m= document.querySelector('#month').value;
-            var d= document.querySelector('#day').value;
 
-            firstDate = new Date(y+"-"+m+"-"+d); 
+            var anni_day = document.querySelector('#anni_day').value;
+
+            if(anni_day == 0) {
+                alert('기념일을 입력하세요');
+            }else {      
+            firstDate = new Date(anni_day); 
 
             start = firstDate.getTime();
             end = now.getTime();
@@ -217,13 +209,14 @@
 
             document.querySelector('#passDay').innerHTML = passDay;
 
-            
             calcDay(100);
             calcDay(200);
             calcDay(365);
             calcDay(500);
             calcDay(730);
             calcDay(1000);
+            }
+
         }
 
         function calcDay(days) {
@@ -251,6 +244,7 @@
             
             document.querySelector("#date"+days).innerHTML = year + '년 ' + month2+ '월 ' + day2 + '일';
         }
+
     </script>
 </body>
 </html>

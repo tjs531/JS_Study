@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익명함수와 화살표 표기법</title>
+    <!--
+
+    -->
+</head>
+<body>
+    <script>
+        //1. 익명함수 - 매개변수가 없음.
+        var f1 = function() {
+            return "Hello";
+        }
+
+        //ES6버전 추가된 개념 : 함수의 화살표 표기법 (다른 언어에서는 람다식이라고 부르기도 함)
+        //화살표 표기법은 익명함수를 간결하게 사용하는 방법
+        let a1 = () => "Hello";
+
+        //즉시 실행 함수
+        (function() {
+            return "hello";
+        })
+
+        //2. 익명함수 - 매개변수 1개, 문자열을 만들어서 리턴
+        var f2 = function(name) {
+            return name + "님, 안녕하셍료";
+        }
+
+        //화살표 표기법
+        //홑따옴표 아니고 키보드 1 옆에 있는 ``로 묶어야 함
+        // $: 매개변수, {}로 묶어준다.
+        //let a2 = (name) => `${name}님, 안녕ㅎ`;      
+        let a2 = name => `${name}님, 안녕ㅎ`;       //매개변수가 한개 있을때는 () 생략 가능.
+        document.write(a2("혜선") + "<br>");
+
+        var f22 = function(name) {return name;};
+        let a22 = name => name;
+
+        //3. 익명함수 - 매개변수 2개
+        var f3 = function(a, b) {
+            return a+b;
+        }
+
+        //화살표 표기법
+        let a3 = (a,b) => a+b;              //매개변수가 두개 이상일때는 ()생략 불가 
+
+    </script>    
+</body>
+</html>
