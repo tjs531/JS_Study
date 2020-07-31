@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>밀리의 서재</title>
+    <style>
+        .container {width:500px; margin: 30px auto; border: 1px solid black; text-align: center;}
+        li h3{ display:inline-block;}
+        #list li {list-style-type: none;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>밀리의 서재에서 읽은 책</h1>
+        </div>
+        <div class="cnt">
+            <ul id="list">
+                
+            </ul>
+        </div>
+
+    </div>
+    <script>
+        function Book(title, author, volume, price) {
+            //프로퍼티
+            this.title = title;
+            this.author = author;
+            this.volume = volume;
+            this.price = price;
+        }
+
+        Book.prototype.showInfo = function () {
+            return "제목: " + this.title + "\n저자: " + this.author + "\n페이지정보: " + this.volume + "\n가격: " + this.price;
+        }
+
+        var book = [
+            new Book('노인과 바다', 'ㅁㅁ', 300, 10000),
+            new Book('레미제라블', 'ㅁㅁ', 600, 15000),
+            new Book('전쟁과 평화', 'ㅁㅁ', 100, 30000),
+            new Book('오만과 편견', 'ㅁㅁ', 500, 20000)
+        ];
+
+        var str="";
+
+        for(var i=0; i<book.length; i++){
+            str += "<li><h3>"+book[i].title+"</h3> <button onclick='confirm(" + i + ")' id='c" +i +"'>확인</button> <button id='delete'>삭제</button></li>"
+        }
+
+        document.querySelector('#list').innerHTML = str;
+
+        for(var i=0; i<members.length; i++) {
+            document.write(members[i].showInfo() + "\n");
+        }
+
+        function confirm(num) {
+            alert(book[num].showInfo());
+        }
+
+    </script>
+</body>
+</html>
