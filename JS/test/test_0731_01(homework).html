@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>밀리의 서재</title>
     <style>
-        .container {width:500px; margin: 30px auto; border: 1px solid black; text-align: center;}
+        .container {width:500px; margin: 50px auto; text-align: center;}
         li h3{ display:inline-block;}
-        #list li {list-style-type: none;}
+        #list li {list-style-type: none; border:1px solid black; width:500px; background-color: honeydew; height: 80px; }
+        ul {padding:0px; height: 240px;}
+        #bookadd {margin: 0px auto; width:500px; background-color:ivory;}
     </style>
 </head>
 <body>
@@ -15,13 +17,17 @@
         <div class="intro">
             <h1>밀리의 서재에서 읽은 책</h1>
         </div>
+        <div class = "add">
+            <button id="bookadd" onclick="addInfo()">책 등록</button>
+        </div>
         <div class="cnt">
             <ul id="list">
-                
             </ul>
         </div>
-
+        
+        
     </div>
+    
     <script>
         function Book(title, author, volume, price) {
             //프로퍼티
@@ -31,32 +37,57 @@
             this.price = price;
         }
 
+        //prototype은 원래 만들어져 있는 객체에 메소드 추가할 때 쓸 수도 있다.(ex> String.prototype.show)
         Book.prototype.showInfo = function () {
             return "제목: " + this.title + "\n저자: " + this.author + "\n페이지정보: " + this.volume + "\n가격: " + this.price;
         }
 
         var book = [
-            new Book('노인과 바다', 'ㅁㅁ', 300, 10000),
-            new Book('레미제라블', 'ㅁㅁ', 600, 15000),
-            new Book('전쟁과 평화', 'ㅁㅁ', 100, 30000),
-            new Book('오만과 편견', 'ㅁㅁ', 500, 20000)
+            new Book('노인과 바다', 'A', 300, 10000),
+            new Book('레미제라블', 'B', 600, 15000),
+            new Book('전쟁과 평화', 'C', 100, 30000),
+            new Book('오만과 편견', 'D', 500, 20000)
         ];
 
-        var str="";
+        var str= "";
+        setbooks();
 
-        for(var i=0; i<book.length; i++){
-            str += "<li><h3>"+book[i].title+"</h3> <button onclick='confirm(" + i + ")' id='c" +i +"'>확인</button> <button id='delete'>삭제</button></li>"
+        function setbooks() {
+            str="";
+
+            for(var i=0; i<book.length; i++){
+    //            if(book[i].title != null){
+                str += "<li><h3>"+book[i].title+"</h3> <button onclick='confirm(" + i + ")' id='c" +i +"'>확인</button> <button onclick='deleteInfo(" + i + ")' id='delete" + i +"'>삭제</button></li>"
+    //            }
+            }
+
+            document.querySelector('#list').innerHTML = str;
         }
 
-        document.querySelector('#list').innerHTML = str;
+        function addInfo(){
+            var title = prompt('제목을 입력하세요');
+            var author = prompt('저자를 입력하세요');
+            var volume = prompt('페이지 수');
+            var price = prompt('가격');
+            book[book.length] = new Book(title,author,volume,price);
 
-        for(var i=0; i<members.length; i++) {
-            document.write(members[i].showInfo() + "\n");
+            setbooks();
         }
-
+        
         function confirm(num) {
             alert(book[num].showInfo());
         }
+
+        function deleteInfo(num) {
+            book.splice(num,1);
+//            delete book[num].title;
+ //           delete book[num].author;
+  //          delete book[num].price;
+   //         delete book[num].volume;
+            setbooks();
+        }
+
+        
 
     </script>
 </body>
