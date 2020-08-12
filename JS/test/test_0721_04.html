@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>0721 4번</title>
     <!-- 
-        1. 입력창으로 부터 정수를 입력 받아서 출력하는 프로그램
-        입력 : 정수 입력 : 10
-        출력 : 1에서 부터 입력받은 정수까지 출력, 홀수 일때는 글자 색을 빨강생, 짝수일때는 파랑색
-        브라우저로 출력
-     -->
+    1. 입력창으로 부터 정수를 입력받아서 출력하는 프로그램
+    입력 : 정수 입력 : 10
+    출력 : 1에서 부터 입력받은 정수까지 출력, 
+    홀수일때는 글자색을 빨강색, 짝수일때는 글자색을 파랑색
+    브라우저로 출력
+-->
 </head>
 <body>
     <script>
-        var num = parseInt(prompt('정수를 입력하세요'));
-        var color;
+        var n = prompt("정수입력 : ");
 
-        for(var i=1; i<=num; i++) {
-            if(i%2 == 0) {
-                color = 'blue';
+        for(var i=1; i<=n; i++) {
+            if(i%2 == 1) {
+                document.write("<span style='color: red'>" + i + "</span> ");
             } else {
-                color = 'red';
+                document.write("<span style='color: blue'>" + i + "</span> ");
             }
-            document.write('<span style="color:'+ color  +'";> '+ i +'</span>');
         }
     </script>
-    
 </body>
 </html>

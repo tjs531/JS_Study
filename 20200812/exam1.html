@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        let ab = 10;
+        const cc='가가';
+        
+        var fn1 = function(n1, n2){
+            return n1 + n2;
+        }
+
+
+        var fn2 = (n1,n2) => {
+            return n1 + n2
+        }
+
+        let re = `안녕하세요 제 나이는 ${ab}입니다.`;        //문자열 안에 주입할 수 있음
+
+        var res = fn1(5, 10);
+
+        result.innerHTML = res;
+
+
+        var eleResult = document.getElementById('result');  //요즘에는 잘 쓰지 않는다. (옛날 방식)
+        //result.innerHTML 로 씀.
+
+        result.innerHTML = res;
+    </script>
+</body>
+</html>

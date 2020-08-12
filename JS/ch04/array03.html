@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1차원 배열</title>
+    <title>1차원 배엳</title>
 </head>
 <body>
     <script>
@@ -11,16 +11,14 @@
 
         document.write("배열의 크기: " + score.length + "<br>");
         for(var i=0; i<score.length; i++) {
-            document.write("score[" + i+ "] = " + score[i] + "<br>");
+            document.write("score[" + i + "] = " + score[i] + "<br>");
         }
-        document.write("--------------------<br>");
-
-        score[6] = "결석";                        //본래 크기보다 큰 인덱스에 값 추가가 가능하다. (배열 크기가 바뀜)
+        document.write("-----------------<br>");
+        score[6] = "갈색";
         score[4] = 84;
-
         document.write("배열의 크기: " + score.length + "<br>");
         for(var i=0; i<score.length; i++) {
-            document.write("score[" + i+ "] = " + score[i] + "<br>");
+            document.write("score[" + i + "] = " + score[i] + "<br>");
         }
     </script>
 </body>

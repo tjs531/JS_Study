@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo() {
+            if(true){
+                 let color = 'blue'                 //let과 const는 자신을 감싸고 있는 스코프에서만 살아있다.
+                 
+            }
+            console.log('color : ' + color)
+        }
+        
+        foo();
+    </script>
+</body>
+</html>

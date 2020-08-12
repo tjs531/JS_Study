@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p57 체중관리 프로그램</title>
+    <title>p57 체중 관리 프로그램</title>
     <!-- 
-        1.입력창을 통해서 이름(name),키(height), 몸무게(weight) 3개의 값을 입력받아 변수에 저장.
-        2. 표준몸무게 계산법 : (키-100)  * 0.9 을 변수에 저장.
-        3. 나의 몸무게가 표준 몸무게의 +5 또는 -5의 사이에 있다면 '적정 체중입니다 '라는 메세지를,
-        나의 몸무게가 표준 멈무게를 벗어난다면 '적정 몸무게가 아닙니다'라는 메세지를 브라우저로 출력.
-        4. 삼항 연산자를 사용하여 출력
-    -->
+        1. 입력창을 통해서 이름(name), 키(height), 몸무게(weight) 3개의 값을 입력받아 변수에 저장
+        2. 표준 몸무게 계산법 : (키 - 100) * 0.9을 변수에 저장
+        3. 
+        나의 몸무게가 표준 몸무게의 +5 또는 -5 사이에 있다면 '적정체중입니다.' 
+        나의 몸무게가 표준 몸무게의 범위를 벗어난다면 '적정 몸무게가 아닙니다.'
+        4.삼항 연산자를 사용하여 출력 (추가: if문 사용)
+     -->
 </head>
 <body>
     <script>
-        var name = prompt("이름을 입력하세요");
-        var height = prompt("키를 입력하세요");
-        var weight = prompt("몸무게를 입력하세요");
-        var ave = (height-100)*0.9;
+        var name, height, weight, normal_weight;
+        name = prompt('이름을 입력하여 주십시오.');
+        height = Number(prompt('키를 입력하여 주십시오.'));
+        weight = Number(prompt('몸무게를 입력하여 주십시오.'));
 
-        var str = weight <= ave+5 && weight >=ave-5 ? "적정 몸무게 입니다": "적정 몸무게가 아닙니다.";
+        normal_weight = (height - 100) * 0.9; // 표준체중
+        var min = normal_weight - 5; // 범위의 최솟값
+        var max = normal_weight + 5; // 범위의 최댓값
 
-        document.write(name+ "님은 " + str);
+        var result = weight >= min && weight <= max;    //범위에 포함 여부
+
+        // 1. 조건선택 연산자 활용
+        document.write(name + '씨는 ' + (result ? '적정체중입니다.' : '적정 몸무게가 아닙니다.'))
+
+        // 2. if문 활용
+        if(result){
+            document.write(name + '씨는 적정체중입니다.');
+        }else{
+            document.write(name + '씨는 적정 몸무게가 아닙니다.');
+        }
+
     </script>
 </body>
 </html>

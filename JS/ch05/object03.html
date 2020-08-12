@@ -3,51 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>객체 활용 3</title>
 </head>
 <body>
     <script>
         //객체 생성자 함수
-        function Student(name, kor, eng, mat){
-            //프로퍼티(property)
+        function Student(name, kor, eng, mat) {
+            // 프로퍼티(property)
             this.name = name;
             this.kor = kor;
             this.eng = eng;
             this.mat = mat;
 
-            //메소드
+            // 메소드
             this.sum = function() {
                 return (this.kor + this.eng + this.mat);
             }
 
+            //this.ave = this.sum() / 3; //프로퍼티
+
+            // 메소드
             this.ave = function() {
-                return this.sum() /3;
+                return this.sum()/3;
             }
 
+            // 메소드
             this.showInfo = function() {
-                return this.name + " " + this.sum() + " " + this.ave() + "<br>";
+                return this.name + ", 총점: " + this.sum() + ", 평균: " + this.ave().toFixed(2) + "<br>";
             }
         }
 
-        //객체생성
-       // var s1 = new Student('정혜선',100,100,100);
+        // 객체 생성
+        // var s1 = new Student('이익준', 92, 93, 93);
+        // document.write("이름: " + s1.name  + ", 총점: " + s1.sum() + ", 평균: " + s1.ave().toFixed(2) + "<br>");
+        
+        // 객체 배열 생성
 
-        //document.write(s1.name + " / " + s1.sum());
-
-
-
-        var student = [
-            new Student('a',10,20,30),
-            new Student('b',100,40,30),
-            new Student('c',45,87,45)
+        var students = [
+            new Student('이익준', 92, 93, 93),
+            new Student('김준완', 72, 67, 63),
+            new Student('양석형', 28, 92, 83),
+            new Student('체송화', 44, 73, 67),
+            new Student('안정원', 73, 69, 88)
         ];
 
-        for(var i=0; i<student.length; i++){
-           // document.write(student[i].name + ", 총점: " + student[i].sum() + " " + student[i].ave() + "<br>");
-           document.write(student[i].showInfo());
+        for(var i=0; i<students.length; i++) {
+            document.write(students[i].showInfo());
         }
-
-
 
     </script>
 </body>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function meth(n1, n2=0, n3=0) {        //n2,n3가 넘어오면 그 값 쓰고 안넘어오면 0 디폴트
+            console.log('n1 : ' + n1);
+            console.log('n2 :' + n2);
+            console.log('n3 : ' + n3)
+        }
+
+        meth(1)
+        meth(1,2)
+        meth(1,2,3)
+        meth(1,2,3,4)
+
+        function b() {
+            console.log(arguments[0])
+        }
+
+        b(1,2)
+
+        var fnMulti = function(n1, n2) {
+            return n1 * n2;
+        }
+
+
+        var fnSum = function(n1, n2){
+            return n1 + n2
+        }
+        
+
+        function doCalc(fn) {               //콜백함수 : A작업과 C작업은 항상 똑같은데 B작업만 계속 바뀔경우. 함수를 받아서 그 부분만 바뀌게 작성할 수 있다.
+            //A작업
+            var a1 = 10
+            var a2 = 20
+
+            //B작업
+            var res = fn(a1, a2)
+            
+            //C 작업
+            console.log('res : ' + res)
+        }
+
+        doCalc(fnSum)
+        doClac(fnMulti)
+    </script>
+</body>
+</html>

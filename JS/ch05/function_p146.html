@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지역함수, 전역함수</title>
+    <title>재귀함수 사용</title>
+    <!-- 
+        재귀함수(reculsive function) 호출 - 함수안에서 잔신의 함수를 호출하는 방법
+     -->
+
 </head>
 <body>
     <script>
-        //전역함수
-        function myFnc(){
-            alert('전역함수');
+      
+        // 전역함수
+        function myFnc() {
+           alert('전역함수')
         }
 
-        //전역함수
+        // 전역함수
         function outerFnc() {
-            //지역함수
-            function myFnc(){
+            // 지역함수
+            function myFnc() {
                 alert("지역함수");
             }
 
-            //지역함수 호출
+            // 지역함수 호출
             myFnc();
         }
 
-        //전역함수 호출
+        // 전역함수
         outerFnc();
         myFnc();
     </script>

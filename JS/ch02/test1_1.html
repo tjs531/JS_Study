@@ -3,32 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2장 연습문제 1</title>
+    <title>2장 연습문제 1번</title>
     <!-- 
-        1. 입력창을 통해 교통비, 식비, 음료비를 입력받아서 변수에 저장, price1, price2, price3
-        2. 이 세가지 비용의 합이 하루 적정 지출비용인 10000원을 넘었을 때 얼마를 초과했는지 출력하고, 
-        하루 적정 지출보다 적으면 '돈관리를 잘했어요'라고 출력. ex> 세가지 비용의 합이 15000원이라면 '5000원 초과헀어요'
-        3. 조건선택 연산자를 활용(추가 : if 문 활용)
-    -->
+        1. 입력창을 통해 교통비, 식비, 음료비를 입력받아서 변수에 저장, price1, price2, price3 
+        2. 이 세가지 비용의 합이 하루 적정 지출 비용인 10000을 넘었을때 얼마를 초과 했는지 출력하고, 하루 적정 지출 비용보다 적으면 '돈 관리를 잘 했어요!'라고 출력
+        ex) 세가지 비용의 합이 15000이라면 '5000원 초과 했어요!'
+        3. 조건 선택 연산자를 활용 (추가: if문 활용)
+     -->
 </head>
 <body>
     <script>
-        var price1 = prompt("교통비를 입력하세요");
-        var price2 = prompt("식비를 입력하세요");
-        var price3 = prompt("음료비를 입력하세요");
-        var sum = parseInt(price1) + parseInt(price2) + parseInt(price3);
+        //입력창으로부터 입력받는 모든 값은 문자열
+        //문자열의 값이 숫자일 때는 숫자로 계산을 함
+        var price1 = Number(prompt('교통비를 입력하시오.', '0'));
+        var price2 = Number(prompt('식비를 입력하시오.', '0'));
+        var price3 = Number(prompt('음료비를 입력하시오.', '0'));
 
-  /*      if(sum > 10000){
-            document.write(sum-10000 + "원을 초과했습니다");
-        }else{
-            document.write("돈관리를 잘했어요");
-        }*/
-        
-        var str = sum > 0 ? sum-10000 +"원을 초과했습니다" : "돈관리를 잘헀어요";
+        // + :숫자일 때는 값을 더함, 문자열일때는 문자열을 연결
+        sum = price1+price2+price3;
 
-        document.write(str);
+        document.write(sum > 10000 ? (sum-10000) + '원 초과했어요!' : '돈 관리를 잘 했어요!');
+
+        // 논리값 : 
+        // true : 0을 제외한 모든 숫자, 모든 문자열
+        // false : 숫자는 0, undefined, null, 빈 문자열
+        if(sum > 10000){
+            document.write((sum-10000) + '원 초과했어요!');
+        }else {
+            document.write('돈 관리를 잘 했어요!');
+        }
 
     </script>
-    
 </body>
 </html>

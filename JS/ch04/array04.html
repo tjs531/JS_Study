@@ -3,59 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2차원 배열 활용</title>
-    <style>
-        table {width : 500px;height:300px;border-collapse: collapse;margin:30px auto; }
-        td,th { width: 10%; border: 1px solid black; text-align: center;}
-    </style>
+    <title>2차원 배열의 활용</title>
     <!-- 
-        1.학생 2차원 배열의 정보를 출력하시오.
-        2. 각 학생별 총점, 평균(소수점 둘째자리)를 기말고사 뒤에 출력하시오.
-        3. table로 출력하시오.
-    -->
+        1. 2차원 배열의 정보를 출력하시오.
+        2. 총점, 평균(소숫점2째자리)를 기말고사 뒤에 출력하시오. 
+        3. 테이블로 출력하시오.
+     -->
+     <style>
+         table{border: 1px solid black; border-collapse: collapse; margin: 0 auto;}
+         td, th{border: 1px solid black; text-align: center; padding: 10px; width: 50px;}
+         caption{
+             margin-bottom: 10px; font-size: x-large; font-weight: bold;
+         }
+         th{background-color: aquamarine;}
+     </style>
 </head>
 <body>
     <script>
+        var result = new Array(0, 0, 0, 0);
+        var title = ['이름', '전공', '중간', '기말', '총점', '평균'];
         var student = new Array(
-            Array("이익준", "컴공", 88, 76),        //이름, 전공, 중간고사 성적, 기말고사 성적
-            Array("양석형", "수학", 70, 83),
-            Array("채송화", "물리", 92, 95),
-            Array("안정원", "전자", 85, 92),
-            Array("김준완", "기계", 97, 88),
+            Array("이익준", "컴공", 88, 76, 0, 0), // 이름, 전공, 중간, 기말
+            Array("양세형", "수학", 70, 83, 0, 0),
+            Array("채송화", "물리", 92, 95, 0, 0),
+            Array("안정원", "전자", 85, 92, 0, 0),
+            Array("김준완", "기계", 97, 88, 0, 0),
+            Array("황시목", "법학", 95, 79, 0, 0),
         );
 
         document.write("<table>");
-        document.write("<caption><h2>성적표</h2></caption>");
-        document.write("<tr><th>이름</th> <th>전공</th> <th>중간</th> <th>기말</th> <th>총점</th> <th>평균</th> </tr>");
-        
-        var midsum =0;
-        var lastsum =0;
-        var score=0;
-        var ave=0;
-        for(var i in student){
-            var sum =0;
-            document.write("<tr>");
-            sum = student[i][2] + student[i][3];
-            student[i][4] = sum;
-            student[i][5] = (sum/2).toFixed(2);
-            for(var j in student[i]) {
-                document.write("<td>");
-               document.write(student[i][j] + " ");
-               document.write("</td>");
-           }
-           midsum += student[i][2];
-           lastsum += student[i][3];
-           score += student[i][4];
-           ave += student[i][5];
-           document.write("<br>");
-           document.write("</tr>");
+        document.write("<caption>성적표</caption>");
+        document.write('<tr>');
+        for (var i = 0; i < title.length; i++) {
+            document.write('<th>' + title[i] + '</th>');
         }
-
-        document.write("<tr><td></td><td></td><td>"+midsum/5+"</td><td>"
-            +lastsum/5+"</td><td>"+score/5+"</td><td>"+Numver(ave/5)+"</td></tr>");
-        
-
-        document.write("</table>");
+        document.write('</tr>');
+        for (var i = 0; i < student.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < student[i].length - 2; j++) {
+                document.write("<td>");
+                document.write(student[i][j] + ' ');
+                document.write("</td>");
+            }
+            student[i][4] = student[i][2] + student[i][3];
+            student[i][5] = (student[i][4] / 2).toFixed(2);
+            document.write("<td>" + student[i][4] + "</td>");
+            document.write("<td>" + student[i][5] + "</td>");
+            result[0] += student[i][2];
+            result[1] += student[i][3];
+            result[2] += student[i][4];
+            result[3] += Number(student[i][5]);
+            document.write("</tr>");
+        }
+        document.write('<tr><th colspan="2">' + " 통계 " + '</th>');
+        for (var i = 0; i < result.length; i++) {
+            document.write('<td>' + (result[i] / student.length).toFixed(2) + '</td>');
+        }
+        document.write("</tr></table>");
     </script>
 </body>
+
 </html>

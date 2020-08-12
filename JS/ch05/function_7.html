@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>재귀함수 사용</title>
+    <!-- 
+        재귀함수(reculsive function) 호출 - 함수안에서 잔신의 함수를 호출하는 방법
+     -->
+
 </head>
 <body>
     <script>
-        var num=0;
-        function testFnc(){
+        var num = 0;
+        function testFnc() {
             num++;
             document.write(num + "<br>");
-
-            if(num==10){        //num이 10일때 멈춤.
-                return;
-            }
-            testFnc();      //재귀함수 호출
-
+            if(num == 10) return;
+            
+            testFnc();
         }
+
         testFnc();
     </script>
 </body>

@@ -91,15 +91,27 @@
             var volume = document.querySelector("#volume").value;
             var price = document.querySelector("#price").value;
 
-            // 준비물을 입력했을 때
-            itemList.push(new Book(title, author, volume, price));
-            document.querySelector("#title").value = "";
-            document.querySelector("#author").value = "";
-            document.querySelector("#volume").value = "";
-            document.querySelector("#price").value = "";
-            document.querySelector("#title").focus();
-            event.preventDefault();
-            showList();
+            if(title == 0) {
+                alert("제목을 입력해 주세요!");
+            } else if(author == 0) {
+                alert("저자를 입력해 주세요!");
+            } else if(volume == 0) {
+                alert("페이지수를 입력해 주세요!");
+            } else if(price == 0) {
+                alert("가격을 입력해 주세요!");
+            } else {
+                // 준비물을 입력했을 때
+                itemList.push(new Book(title, author, volume, price));
+                document.querySelector("#title").value = "";
+                document.querySelector("#author").value = "";
+                document.querySelector("#volume").value = "";
+                document.querySelector("#price").value = "";
+                document.querySelector("#title").focus();
+                event.preventDefault();
+                showList();
+            }
+
+            
         }
 
         function showList() {

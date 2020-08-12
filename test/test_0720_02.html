@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0720 2번</title>
+    <!--
+        1.입력창으로부터 가위/바위/보 중에 하나 입력받아서 브라우저 화면에 해당 이미지를 출력하는 프로그램
+        기본값 : 가위
+        결과 : 가위를 입력하셨습니다. (가위 이미지)
+    -->
+</head>
+<body>
+    <script>
+        var rsp = prompt("가위/바위/보 중 하나 입력하세요","가위");
+                                                        //가위 디폴트값
+
+        if(rsp == '바위'){
+            document.write("<img src='images/math_img_2.jpg' width='200px'><br> <h3>바위를 입력하셨습니다.</h3>");
+        }else if(rsp == '보'){
+            document.write("<img src='images/math_img_3.jpg' width='200px'><br> <h3>보를 입력하셨습니다.</h3>");
+        }else{
+            document.write("<img src='images/math_img_1.jpg' width='200px'><br> <h3>가위를 입력하셨습니다.</h3>");
+        }
+    </script>
+</body>
+</html>

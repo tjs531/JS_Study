@@ -1,5 +1,5 @@
-var s1 = "Wecome to Javascript World<br>";
-var s2 = "Enjoy Javascript Programing";
+var s1 = "Welcome to Javascript~~~ <br>";
+var s2 = "Enjoy Javascript Programming!!!";
 
 //함수 생성
 function welcome(target){

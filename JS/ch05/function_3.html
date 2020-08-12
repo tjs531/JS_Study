@@ -7,14 +7,16 @@
 </head>
 <body>
     <script>
+        // 함수 정의
         function myFnc(name, area){
-            document.write("안녕하세요. " + name+"입니다.<br>");
-            document.write("사는 곳은 " + area + "입니다.<br><br>");
+            document.write("안녕하세요. " + name + "입니다.<br>");
+            document.write("사는 곳은 " + area + "입니다.<br>");
         }
+
         //함수 호출
-        myFnc("정혜선","대구");
-        myFnc("정혜선");    //두번째 값은 undefind로 처리됨.
-        myFnc("정혜선","대구",29);  //세번째 값은 무시함.
+        myFnc("사공수기", "경산");
+        myFnc("사공수기"); // 두번째 값은 undefind으로 처리함
+        myFnc("사공수기", "경산", 40); // 세번째 값은 무시하고 처리함.
     </script>
 </body>
 </html>
