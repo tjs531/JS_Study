@@ -18,18 +18,20 @@
         </section>
     </div>
     <script>
-        $(document).ready(function(){
-            var srcVal = $("#sec_1").attr("src"); //값을 읽어올때
+        $(document).ready(function() {
+            var srcVal = $("#sec_1 img").attr("src"); // 값을 읽어올때
             console.log(srcVal);
 
-            //$("#sec_1 img").attr("width", "200").attr("src", "images/math_img_2.jpg").attr("alt", "바위");
+            //$("#sec_1 img").attr("width","200").attr("src","images/math_img_2.jpg").attr("alt","바위");
             $("#sec_1 img").attr({
                 "width":"200",
-                //"src":srcVal.replace("math_img_1.jpg", "math_img_2.jpg"),
+                //"src":srcVal.replace("math_img_1.jpg","math_img_2.jpg"),
                 "src":"images/math_img_2.jpg",
                 "alt":"바위"
             }).removeAttr("border");
-        })
+
+
+        });
     </script>
 </body>
 </html>

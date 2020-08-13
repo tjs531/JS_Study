@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /////////콜백 함수/////////
+
+        Array.prototype.arr = [];           //Array객체(내장객체) 안에 변수나 메소드를 추가하려면 prototype을 써야한다.
+        Array.prototype.forEach2 = function(fn) { //Array객체 안에 함수 생성
+            for(var i=0; i<this.arr.length; i++){
+                var item = this.arr[i];
+
+                fn(item);
+            }
+        }
+
+        var objArr = new Array()
+        objArr.arr = ['A','B','C'];
+        
+        var func = function(a) { 
+            alert(a);
+        }
+
+        objArr.forEach2(func);
+
+    </script>
+</body>
+</html>

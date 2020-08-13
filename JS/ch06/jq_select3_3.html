@@ -7,10 +7,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .container { width: 600px; margin: 0 auto;}
-        .aqua {background-color: #0ff;}
+        .aqua { background-color: #0ff;}
         .red { background-color: #f00;}
         .green { background-color: #0f0;}
-        .yellow{ background-color: #ff0;}
+        .yellow { background-color: #ff0;}
     </style>
 </head>
 <body>
@@ -26,12 +26,10 @@
         $(document).ready(function() {
             $("#p1").addClass("aqua"); // 클래스 추가
             $("#p2").removeClass("red"); // 클래스 삭제
-            $("#p3").toggleClass("green"); // 없으면 생성, 있으면 삭제
-            $("#p4").toggleClass("green"); // 없으면 생성, 있으면 삭제
+            $("#p3").toggleClass("green"); // 해당 클래스가 없으면 생성, 있으면 삭제
+            $("#p4").toggleClass("green"); // 해당 클래스가 없으면 생성, 있으면 삭제
             $("#p6").text($("#p5").hasClass("yellow"));
-
-
-        })
+        });
     </script>
 </body>
 </html>

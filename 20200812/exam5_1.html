@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
+        #container {text-align: center; margin-top: 100px;}
+        #seatsContainer {width:550px; margin:0 auto;}
+        #screen {height: 30px; text-align: center; background-color:lightgray;}
         .lbl:first-child{
             margin-right:20px;
         }
+        .sel { width:45px;}
+        .seat {margin-top : 10px;}
+        .btn {width: 50px; height: 40px;margin:1px;}
+        .btn:hover { background-color: yellow;}
+        #re_btn {margin-top : 10px; radi}
+        
     </style>
 </head>
 <body>
-    <div id="memberContainer"></div>
-    <div id="seatsContainer"></div>
+    <div id="container">
+        <div id="memberContainer"></div>
+        <div id="seatsContainer">
+            <div id="screen"><p>스크린</p></div>
+        </div>
+        <div><button id='re_btn' onclick="set()">완료</button></div>
+        <div id="result"></div>
+    </div>
     <script>
+
+        var count = 0;
+        var sel_seats = [];
+        var seat_cnt=0;
+        
         function makeSelect(_title, _selectId){
             var label_adult = document.createElement('label');
             label_adult.setAttribute('class','lbl');
@@ -21,6 +42,8 @@
             span_adult.innerHTML = `${_title} : `
             var select_adult = document.createElement('select');
             select_adult.id = _selectId;
+            select_adult.setAttribute('class','sel');
+            select_adult.setAttribute('onchange','setcount('+_selectId+')');            //select 값 바꿔줄 때마다 이벤트 발생
             for(var i=0; i<=5; i++){
                 var opt = document.createElement('option');
                 opt.value= i;
@@ -29,16 +52,89 @@
             }
             label_adult.appendChild(span_adult);
             label_adult.appendChild(select_adult);
-            
+
             return label_adult;
         }
+
+        function makeSeatBtns(arr, colCnt){             //좌석 생성
+            var div = document.createElement('div');
+
+            for(var i=0; i<arr.length; i++){
+                var inner_div = document.createElement('div');
+                for(var z=0; z<colCnt; z++) {
+                    var button = document.createElement('button');
+                    button.innerHTML=`${arr[i]}${z+1}`;
+                    button.setAttribute('class','btn');
+                    button.id = 'btn' + `${arr[i]}${z+1}`;
+                    button.setAttribute('onclick','cChange('+button.id+')');
+                    button.setAttribute('value',`${arr[i]}${z+1}`)
+                    inner_div.appendChild(button);
+                }
+                div.appendChild(inner_div);
+            }
+            div.setAttribute('class','seat');
+            return div;
+        }
+
+        function setcount(id){              //셀렉트 이벤트,  인원수 합계
+            if($(id).val()!= 0){
+                count += Number($(id).val());
+                console.log(count);
+            }
+        }
+
+        function cChange(id){               //버튼 이벤트
+            var color = $(id).css("background-color");
+
+            if(color == 'rgb(255, 255, 0)')
+            {
+                if(seat_cnt != count){
+                    $(id).css("background-color","blue").css("color","white");
+                    sel_seats.push(id)
+                    seat_cnt++;
+                }else{
+                    alert("인원수를 초과했습니다")
+                }
+            } else {
+                $(id).css("background-color","").css("color","");
+                sel_seats = sel_seats.filter(function(item){
+                    return item != id
+                })
+                seat_cnt--;
+            }
+        }
+
+        function set(){                 //완료 버튼 이벤트. 좌석 출력
+            if(sel_seats.length==0){
+                alert("좌석을 선택해주세요");
+            }else if(sel_seats.length != count){
+                alert("좌석 수를 올바로 선택해주세요")
+                console.log(sel_seats.length)
+                console.log(count)
+            }else{
+                var res = document.createElement("p");
+                res.innerHTML = "예약 좌석 :  "
+                for(var i=0; i<sel_seats.length; i++){
+                    console.log(sel_seats[i].value)
+                    res.innerText += sel_seats[i].value + " "
+                }
+                result.appendChild(res)
+            }
+        }
+
         function init() {
             var select_adult = makeSelect('성인','sel_adult_member_cnt');
             var select_teen = makeSelect('청소년', 'sel_teen_mamber_cnt');
             memberContainer.appendChild(select_adult);
             memberContainer.appendChild(select_teen);
+
+            var arr = ['A','B','C','D','E','F'];
+            var seat_btns = makeSeatBtns(arr,10);
+            seatsContainer.appendChild(seat_btns);
         }
+
         init();
+    
     </script>
 </body>
 </html>
