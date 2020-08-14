@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #container {width:300px; margin:20px auto; padding:50px; border:1px solid black;}
+        img {width:50px; margin:10px;}
+        .origin {padding-top:10px;}
+        .sublist {color:blue; padding-top:10px; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div><img src="images/w3.PNG">Web Programming!</div>
+        <hr>
+        <input type="text" id="sub">&nbsp;<input type="button" id="btn" value="교과내용 추가">
+        <div class="origin">HTML5</div>
+        <div class="origin">CSS3</div>
+        <div class="origin">Javascript</div>
+        <div id="list"></div>
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#list").append(`<div class="sublist">${sub.value}</div>`);
+                $("#sub").val("");
+            })
+        })
+    </script>
+    
+</body>
+</html>

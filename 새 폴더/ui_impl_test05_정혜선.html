@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container { width: 900px; margin: 50px auto; padding: 20px; border: 1px solid black; }
+        h2 { text-align: center; margin-top:20px; } 
+        img { width: 100px; border-radius: 40px; margin: 20px;}
+        .start { border: none; background-color: black; color: white; padding: 8px; font-size: 15px; }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>토끼와 거북이 우화</h2>
+        <img src="images/turtle.png" alt="" id="turtle"><br>
+        <img src="images/rabbit.png" id="rabbit"><br>
+        <button class="start">달리기 시작</button>
+        <div class="msg"></div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".start").click(function () {
+            $("#turtle").delay(2000).animate({ marginLeft: "+=800px" }, 10000, stop(), function () {
+                $('.msg').html("비록 느리더라도 꾀부리지 않고 노력해야만 원하는 바를 이룰 수 있다. ")
+                $('.msg').css({ color: "red", fontWeight: "bold", fontSize: "1.5em", margin:"20px", })
+            }) 
+            $("#rabbit").animate({ marginLeft: "+=200px" }, 2000).stop
+        })
+    })
+</script>
+
+</body>
+</html>

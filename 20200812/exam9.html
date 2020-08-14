@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.arr = []
+        Array.prototype.filter2 = function(fn) {
+            var result = []
+            for(var i=0; i<this.arr.length; i++){
+                var item = this.arr[i]
+                if(fn(item)) {
+                    result.push(item)
+                }
+            }
+            return result;
+        }
+
+        var originArr = [3, 5, 9, 10, 23, 12, 22]
+        var result = originArr.filter(function(item) {
+            if(item % 2 == 0) {
+                return true;
+            }
+        })
+        console.log(`result : ${result}`)
+
+        var myArr = Array()
+        myArr.arr = [3, 5, 9, 10, 23, 12, 22]
+        var myResult = myArr.filter2(function(item) {
+            return item % 2 == 0 
+        })
+
+        console.log(`myResult : ${myResult}`)
+    </script>
+</body>
+</html>

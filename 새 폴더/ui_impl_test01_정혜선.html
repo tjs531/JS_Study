@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ui-impl-test01</title>
+    <style>
+        .container { width: 650px; margin: 30px auto; }
+        .container h2 { text-align: center; }
+        .container form { background-color: purple; padding: 20px 30px; text-align: center; width:650px;}
+        form input{ border: none; width: 150px; padding: 10px; margin-right:10px; }
+        form #btn { background-color: white; border: none; width: 60px; padding: 10px; box-shadow: black 2px 3px 3px;  margin-left: 5px; }
+        ul { list-style: none; margin: 0; padding: 0; }
+        ul li { background-color: #eee; padding: 10px 10px 10px 50px; position: relative; width:650px; }
+        ul li:nth-child(odd) { background-color: #ddd; width:650px;} 
+        .remove { background-color: peachpuff; padding: 3px 12px 6px 12px; font-size: 1.5em; color: red; position: absolute; right: 0; top: 0; }
+        .movieInfo { padding: 3px 12px 6px 12px; position: absolute; right: 34px; top: 0; bottom:0; background-color: yellow; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>영화 관람 리스트</h2>
+        <form>
+            <input type="text" id="title" autofocus placeholder="영화명">
+            <input type="datetime-local" id="date">
+            <input type="text" id="theater" placeholder="극장명">
+            <button id="btn">추가</button>
+        </form>
+        <div id="itemList"></div>
+    </div>
+
+    <script>
+        function Movie(title, date, theater) {
+            this.title = title;
+            this.date = date;
+            this.theater = theater;
+        }
+
+        Movie.prototype.showInfo = function() {
+            return "제목 : " + this.title + "\n관람일시 : " + this.date + "\n극장명 : " + this.theater;
+        }
+
+        var itemList = [];
+        var btn = document.querySelector("#btn");
+        btn.addEventListener("click", addList); 
+        
+        function addList() {
+            var title = document.querySelector("#title").value;
+            var date = document.querySelector("#date").value;
+            var theater = document.querySelector("#theater").value;
+            if(title == 0) {
+                alert('제목을 입력해주세요.');
+            }else if(date == 0) {
+                alert('날짜를 입력해주세요.');
+            }else if(theater == 0) {
+                alert('극장명을 입력해주세요.');
+            }else {
+                itemList.push(new Movie(title, date, theater));
+                document.querySelector("#title").value = "";
+                document.querySelector("#date").value = "";
+                document.querySelector("#theater").value = "";
+                document.querySelector("#title").focus();
+               // event.preventDefault();
+                showList();
+            }
+        }
+
+
+        function showList() {
+            event.preventDefault();
+            var list = "<ul>";
+            for(var i = 0; i < itemList.length; i++) {
+                list += "<li>" + itemList[i].title + "<span class='movieInfo' id="+ i +">영화정보</span>" +"<span class='remove' id="+ i +">x</span>" + "</li>"
+            }
+
+            list += "</ul>";
+
+            document.getElementById("itemList").innerHTML = list;
+
+            var MovieList = document.querySelectorAll(".movieInfo");
+
+            for(var i = 0; i < itemList.length; i++) {
+                MovieList[i].addEventListener("click", showMovieInfo);
+            }
+
+            var MovieList = document.querySelectorAll(".remove");
+
+            for(var i = 0; i < itemList.length; i++) {
+                MovieList[i].addEventListener("click", remove);
+            }
+        }
+
+        function remove() {
+            var id = this.getAttribute("id");
+            itemList.splice(id, 1);
+            showList(); 
+        }
+
+        function showMovieInfo() {
+            var id = this.getAttribute("id");
+            alert(itemList[id].showInfo());
+        }
+    </script>
+</body>
+</html>

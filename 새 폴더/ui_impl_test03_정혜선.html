@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container { width: 600px; margin: 20px auto;
+        padding:50px; border: 1px solid black;}
+        h2 {text-align: center;}
+        select {width: 250px; height: 30px; font-size:1em;} 
+    </style>
+</head>
+<body>
+    <div class="container">
+         <h2>코리아 모터스</h2>
+             <p>구매하실 차종을 선택하시오</p>
+            <select id="car" onchange="cCar()">
+                <option value="car1">2020 그랜져 하이브리드</option>
+                <option value="car2">2020 제네시스 GV80</option>
+                <option value="car3">2020 팰리세이드</option>
+                <option value="car4">2020 소나타 하이브리드</option>
+                <option value="car5">2019 QM6</option>
+                <option value="car6">2019 K7</option>
+            </select>
+         <img id="img" src='images/car1.png'>
+         <div id="msg"></div>
+    </div>
+
+    <script>
+        function cCar() {
+            var car = document.getElementById("car").value;
+            var msg = document.getElementById("car");
+
+            $('#img').attr("src",`images/${car}.png`)
+            $('#msg').html(`고객님은 ${msg.options[msg.selectedIndex].text}를 선택하셨습니다`)
+        }
+    </script>
+
+</body>
+</html>

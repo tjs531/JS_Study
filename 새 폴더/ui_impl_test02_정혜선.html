@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ui-impl-test02</title>
+    <style>
+        .container { width: 500px; margin:30px auto; padding:30px; border:1px solid black;}
+        h2 {text-align: center;}
+        fieldset {margin: 10px; padding:20px;}
+        legend {font-weight: bold;}
+        input {margin-bottom: 20px;}
+        label {color:green; font:bold; margin-right:30px;}
+        #button {text-align: center;}
+        #button input {width:80px; height:40px; background-color: black;color:white; margin:10px 10px;}
+        select {width:150px; height:25px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h2>수강신청</h2>
+            <fieldset>    
+                <legend>신청인</legend>
+                <label>이름</label>
+                <input type="text" id="name" value=""><br>
+                <label for="major">학과</label>
+                <select name="major" id="major">
+                    <option>---학과 선택---</option>
+                    <option value="컴퓨터공학과">컴퓨터공학과</option>
+                    <option value="전자공학과">전자공학과</option>
+                    <option value="기계공학과">기계공학과</option>
+                    <option value="건축공학과">건축공학과</option>
+                    <option value="화학공학과">화학공학과</option>
+                    <option value="산업공학과">산업공학과</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>신청 과목</legend>
+                <p>이 달에 신청할 과목을 선택하세요.</p>
+                <input type="radio" name="subject" value="영어회화"">영어 회화&nbsp;&nbsp;
+                <input type="radio" name="subject" value="영어문법">영어 문법&nbsp;&nbsp;
+                <input type="radio" name="subject" value="영어작문">영어 작문
+            </fieldset>
+            <fieldset>
+                <legend>메일링</legend>
+                <p>메일로 받고 싶은 뉴스 주제를 선택해 주세요</p>
+                <input type="checkbox" class="mailing" name="news" value="해외뉴스">해외뉴스&nbsp;&nbsp;
+                <input type="checkbox" name="news" value="5분회화">5분회화&nbsp;&nbsp;
+                <input type="checkbox" name="news" value="모닝팝스">모닝팝스
+            </fieldset>
+            <div id="button">
+            <input type="reset" value="취소" onclick="cancel()">
+            <input type="submit" value="확인" onclick="inputComplete()">
+        </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function inputComplete(){
+            var name = document.getElementById('name').value;
+            var major = document.querySelector('#major');
+            var subject = document.getElementsByName('subject')
+            var mailing = document.getElementsByName('news')
+
+            var sub = "", mail = "";
+            for(var i=0; i<subject.length; i++) {
+                if(subject[i].checked == true) { 
+                    sub = subject[i].value;
+                }
+            }
+            for(var i=0; i<mailing.length; i++) {
+                    if(mailing[i].checked == true) {
+                        mail += mailing[i].value + " ";
+                }
+            }
+
+            if(name==0){
+                alert("이름을 입력하세요");
+            }else if(major.selectedIndex ==0){
+                alert("학과를 선택하세요");
+            }else if(sub ==""){
+                alert("과목를 선택하세요");
+            }else if(mail==""){
+                alert("메일링을 선택하세요");
+            }else{
+                
+                alert("이름: " + name + "\n학과: " + major.value +"\n신청과목: " + sub + "\n메일링: "+mail);
+            }
+        }
+        
+        function cancel(){
+            var name = document.getElementById('name')
+            var major = document.querySelector('#major')
+            var subject = document.getElementsByName('subject')
+            var mailing = document.getElementsByName('news')
+
+            name.value="";
+            major.selectedIndex=0;
+            for(var i=0; i<subject.length; i++) {
+                subject[i].checked = false;
+            }
+
+            for(var i=0; i<mailing.length; i++) {
+                mailing[i].checked = false;
+            }
+        }
+    </script>
+</body>
+</html>
